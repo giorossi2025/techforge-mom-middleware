@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    ports:
+      - "5671:5671"
+      - "15672:15672"
+    volumes:
+      - ./definitions.json:/etc/rabbitmq/definitions.json
+      - ./certs:/certs
+    environment:
+      - RABBITMQ_SSL_CACERTFILE=/certs/ca.crt
+      - RABBITMQ_SSL_CERTFILE=/certs/rabbitmq.crt
+      - RABBITMQ_SSL_KEYFILE=/certs/rabbitmq.key
+      - RABBITMQ_SSL_VERIFY=verify_peer
+      - RABBITMQ_SSL_FAIL_IF_NO_PEER_CERT=true
+      - RABBITMQ_LOAD_DEFINITIONS=/etc/rabbitmq/definitions.json
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "8883:8883"
+    volumes:
+      - ./certs:/mosquitto/config/certs
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf

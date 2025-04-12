@@ -1,0 +1,12 @@
+{
+  "users": [
+    { "name": "mes", "password": "mespass", "tags": "" },
+    { "name": "robot", "password": "robotpass", "tags": "" }
+  ],
+  "vhosts": [ { "name": "/" } ],
+  "permissions": [
+    { "user": "mes", "vhost": "/", "configure": ".*", "write": ".*", "read": ".*" },
+    { "user": "robot", "vhost": "/", "configure": ".*", "write": ".*", "read": ".*" }
+  ],
+  "queues": [ { "name": "commands", "vhost": "/", "durable": true } ]
+}
