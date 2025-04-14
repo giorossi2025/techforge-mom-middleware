@@ -1,0 +1,38 @@
+{
+  "vhosts": [{ "name": "/" }],
+  "users": [
+    {
+      "name": "mes_user",
+      "password": "mespass",
+      "tags": ""
+    },
+    {
+      "name": "robot_user",
+      "password": "robotpass",
+      "tags": "management"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "mes_user",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "robot_user",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "queues": [
+    {
+      "name": "production_queue",
+      "vhost": "/",
+      "durable": true
+    }
+  ]
+}

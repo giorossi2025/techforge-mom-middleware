@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: rabbitmq
+    ports:
+      - "5671:5671"      # Porta SSL/TLS per RabbitMQ (connessioni da MES/Robot)
+      - "15672:15672"    # Porta interfaccia di management (accesso via browser)
+    volumes:
+      - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json
+      - ./rabbitmq/certs:/certs
+    environment:
+      - RABBITMQ_LOAD_DEFINITIONS=/etc/rabbitmq/definitions.json
+      - RABBITMQ_SSL_CACERTFILE=/certs/ca.crt
+      - RABBITMQ_SSL_CERTFILE=/certs/server.crt
+      - RABBITMQ_SSL_KEYFILE=/certs/server.key
+      - RABBITMQ_SSL_VERIFY=verify_peer
+      - RABBITMQ_SSL_FAIL_IF_NO_PEER_CERT=true

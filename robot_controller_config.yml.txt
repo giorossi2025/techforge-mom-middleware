@@ -1,0 +1,17 @@
+rabbitmq:
+  host: rabbitmq.local
+  port: 5671
+  queue: production_queue
+  certs:
+    ca: robot_controller/certs/ca.crt
+    cert: robot_controller/certs/client.crt
+    key: robot_controller/certs/client.key
+
+mqtt:
+  host: mqtt-broker.local
+  port: 8883
+  topic: status/robot001
+  certs:
+    ca: robot_controller/certs/ca.crt
+    cert: robot_controller/certs/client.crt
+    key: robot_controller/certs/client.key
