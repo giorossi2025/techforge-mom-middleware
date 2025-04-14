@@ -1,0 +1,8 @@
+rabbitmq:
+  host: rabbitmq.local
+  port: 5671
+  queue: production_queue
+  certs:
+    ca: mes_simulator/certs/ca.crt
+    cert: mes_simulator/certs/client.crt
+    key: mes_simulator/certs/client.key
